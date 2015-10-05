@@ -1,7 +1,7 @@
 {
   "name": "colorwheel",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
+  "description": "Generates beautiful color schemes for those who know little about color theory",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,5 +10,21 @@
   "license": "MIT",
   "dependencies": {
     "color": "^0.10.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quietshu/colorwheel.git"
+  },
+  "keywords": [
+    "color",
+    "color",
+    "wheel",
+    "color",
+    "scheme"
+  ],
+  "bugs": {
+    "url": "https://github.com/quietshu/colorwheel/issues"
+  },
+  "homepage": "https://github.com/quietshu/colorwheel"
 }

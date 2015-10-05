@@ -15,7 +15,7 @@ function Analogous(color, rotate) {
 }
 
 /**
- * list analogous colors by count
+ * List analogous colors by count
  * @param count
  * @returns {Array}
  */
