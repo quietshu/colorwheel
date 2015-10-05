@@ -5,6 +5,8 @@
 
 'use strict';
 
+var List = require('./list');
+
 function Complementary(color) {
     if (!(this instanceof Complementary)) {
         return new Complementary(color);
@@ -18,7 +20,7 @@ function Complementary(color) {
  * @returns {Array}
  */
 Complementary.prototype.list = function () {
-    return [this.color.clone(), this.color.clone().rotate(180)];
+    return new List(this.color.clone(), this.color.clone().rotate(180));
 };
 
 module.exports = Complementary;

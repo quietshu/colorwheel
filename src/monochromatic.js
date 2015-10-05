@@ -5,6 +5,8 @@
 
 'use strict';
 
+var List = require('./list');
+
 function Monochromatic(color, step) {
     if (!(this instanceof Monochromatic)) {
         return new Monochromatic(color, step);
@@ -24,10 +26,10 @@ Monochromatic.prototype.list = function (count) {
     try {
         cnt = parseInt(arguments[0]);
     } catch (err) {
-        return [];
+        return new List();
     }
 
-    var scheme = [];
+    var scheme = new List();
     var step   = -this.step * (cnt - 1) / 2;
     for (var i = 0; i < cnt; ++i) {
         var color = this.color.clone();

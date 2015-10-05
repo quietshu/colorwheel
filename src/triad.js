@@ -5,6 +5,8 @@
 
 'use strict';
 
+var List = require('./list');
+
 function Triad(color) {
     if (!(this instanceof Triad)) {
         return new Triad(color);
@@ -18,7 +20,7 @@ function Triad(color) {
  * @returns {Array}
  */
 Triad.prototype.list = function () {
-    return [this.color.clone().rotate(-120), this.color.clone().rotate(0), this.color.clone().rotate(120)];
+    return new List(this.color.clone().rotate(-120), this.color.clone().rotate(0), this.color.clone().rotate(120));
 };
 
 module.exports = Triad;

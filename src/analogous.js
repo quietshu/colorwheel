@@ -5,6 +5,8 @@
 
 'use strict';
 
+var List = require('./list');
+
 function Analogous(color, rotate) {
     if (!(this instanceof Analogous)) {
         return new Analogous(color, rotate);
@@ -24,10 +26,10 @@ Analogous.prototype.list = function (count) {
     try {
         cnt = parseInt(arguments[0]);
     } catch (err) {
-        return [];
+        return new List();
     }
 
-    var scheme = [];
+    var scheme = new List();
     var rotate = -this.rotate * (cnt - 1) / 2;
     for (var i = 0; i < cnt; ++i) {
         var color = this.color.clone();
