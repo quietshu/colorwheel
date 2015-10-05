@@ -1,0 +1,14 @@
+{
+  "name": "colorwheel",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shu Ding <ds303077135@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "color": "^0.10.1"
+  }
+}
