@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>colorwheel.js</title>
+  <script type="text/javascript" src="../build/colorwheel.js"></script>
+</head>
+<body>
+<style>
+  .color-block {
+    display: inline-block;
+    width: 100px;
+    height: 80px;
+  }
+</style>
+
+<label>
+  Choose the main color:
+  <input type="color" id="color-selector" value="#ff0000">
+</label>
+
+<div>
+  <h2>Complementary:</h2>
+  <span class="color-block" id="complementary-color-block-0"></span>
+  <span class="color-block" id="complementary-color-block-1"></span>
+</div>
+
+<div>
+  <h2>Triad:</h2>
+  <span class="color-block" id="triad-color-block-0"></span>
+  <span class="color-block" id="triad-color-block-1"></span>
+  <span class="color-block" id="triad-color-block-2"></span>
+</div>
+
+<div>
+  <h2>Analogous:</h2>
+  <span class="color-block" id="analogous-color-block-0"></span>
+  <span class="color-block" id="analogous-color-block-1"></span>
+  <span class="color-block" id="analogous-color-block-2"></span>
+  <span class="color-block" id="analogous-color-block-3"></span>
+  <span class="color-block" id="analogous-color-block-4"></span>
+</div>
+
+<div>
+  <h2>Monochromatic:</h2>
+  <span class="color-block" id="monochromatic-color-block-0"></span>
+  <span class="color-block" id="monochromatic-color-block-1"></span>
+  <span class="color-block" id="monochromatic-color-block-2"></span>
+  <span class="color-block" id="monochromatic-color-block-3"></span>
+  <span class="color-block" id="monochromatic-color-block-4"></span>
+</div>
+
+<script type="text/javascript">
+  var elementCache = {};
+  var colorSelector = document.getElementById('color-selector');
+  var changeHandler = function () {
+    var color = new Colorwheel(this.value);
+    color.complementary().rgbString().forEach(function (rgb, index) {
+      var id = 'complementary-color-block-' + index;
+      (elementCache[id] || (elementCache[id] = document.getElementById(id))).style['background-color'] = rgb;
+    });
+    color.triad().rgbString().forEach(function (rgb, index) {
+      var id = 'triad-color-block-' + index;
+      (elementCache[id] || (elementCache[id] = document.getElementById(id))).style['background-color'] = rgb;
+    });
+    color.monochromatic(0.3).rgbString().forEach(function (rgb, index) {
+      var id = 'monochromatic-color-block-' + index;
+      (elementCache[id] || (elementCache[id] = document.getElementById(id))).style['background-color'] = rgb;
+    });
+    color.analogous(30).rgbString().forEach(function (rgb, index) {
+      var id = 'analogous-color-block-' + index;
+      (elementCache[id] || (elementCache[id] = document.getElementById(id))).style['background-color'] = rgb;
+    });
+  };
+
+  colorSelector.addEventListener('change', changeHandler);
+  changeHandler.call(colorSelector);
+</script>
+</body>
+</html>

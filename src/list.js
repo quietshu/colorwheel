@@ -8,7 +8,7 @@
 var Color = require('color');
 
 function List() {
-    var a = [];
+    var a       = [];
     a.push.apply(a, arguments);
     a.__proto__ = List.prototype;
     return a;
@@ -18,14 +18,16 @@ List.prototype = [];
 
 for (var method in Color.prototype) {
     if (Color.prototype.hasOwnProperty(method)) {
-        List.prototype[method] = function () {
-            var ret = [];
-            var arg = arguments;
-            this.forEach(function (color) {
-                ret.push(color[method].call(color, arg));
-            });
-            return ret;
-        };
+        List.prototype[method] = (function (method) {
+            return function () {
+                var ret = new List();
+                var arg = arguments;
+                this.forEach(function (color) {
+                    ret.push(color[method].apply(color, arg));
+                });
+                return ret;
+            }
+        })(method);
     }
 }
 
